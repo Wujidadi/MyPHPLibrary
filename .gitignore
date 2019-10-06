@@ -1,0 +1,8 @@
+.DS_Store
+*/.DS_Store
+*.sublime-*
+*/*.sublime-*
+.idea
+.idea/*
+sftp-config.json
+*/sftp-config.json
