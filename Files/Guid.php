@@ -1,14 +1,16 @@
 <?php
 
-/**
- * Author: @sudiptpa（Sujip Thapa）
- * Github: https://github.com/sudiptpa/guid
- * Notes:
- *   將原本 Sujip\Guid\Guid class 中的 create 方法提取出來，直接作為函數引用
- */
-if (!function_exists('guid'))
+if (!function_exists('Guid'))
 {
-    function guid($trim = true)
+    /**
+     * 返回 GUID：將原本 Sujip\Guid\Guid class 中的 create 方法提取出來，直接作為函數引用
+     *
+     * 原作者 Sujip Thapa (https://github.com/sudiptpa/guid)
+     *
+     * @param boolean $trim
+     * @return string
+     */
+    function Guid($trim = true)
     {
         // Windows
         if (function_exists('com_create_guid') === true) {
