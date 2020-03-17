@@ -6,10 +6,12 @@ if (!defined('Base62Dict'))
     define('Base62Dict', '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz');
 }
 
-if (!function_exists('str_base62'))
+if (!function_exists('StrBase62'))
 {
     /**
      * 產生隨機 Base62 字串
+     *
+     * 原名 str_base62
      *
      * @param integer $length
      * @return string
