@@ -28,7 +28,7 @@ class Helpers
     }
 
     /**
-     * 返回帶毫秒的時間字串
+     * 返回微秒級時間字串
      *
      * @return string
      */
@@ -40,7 +40,7 @@ class Helpers
     }
 
     /**
-     * 返回帶毫秒的時間戳
+     * 返回微秒級時間戳
      *
      * @return string
      */

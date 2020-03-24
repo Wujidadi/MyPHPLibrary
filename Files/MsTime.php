@@ -3,7 +3,7 @@
 if (!function_exists('MsTime'))
 {
     /**
-     * 返回帶毫秒的時間字串
+     * 返回微秒級時間字串
      *
      * @return string
      */
@@ -18,7 +18,7 @@ if (!function_exists('MsTime'))
 if (!function_exists('MsTimestamp'))
 {
     /**
-     * 返回帶毫秒的時間戳
+     * 返回微秒級時間戳
      *
      * @return string
      */
