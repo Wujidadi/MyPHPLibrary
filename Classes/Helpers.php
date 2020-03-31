@@ -2,12 +2,60 @@
 
 namespace App\Classes;
 
+/*
+ *========================================
+ * 目錄
+ *========================================
+ * + 變數檢驗
+ *   - function IsSafe
+ *
+ * + 時間
+ *   - function  Time
+ *   - function  Timestamp
+ *
+ * + 數字及文字格式
+ *   - const     EmailFormat
+ *
+ * + Excel 欄位名稱與數字互轉（變相的 26 進位）
+ *   - function  ExcelColumnToNumber
+ *   - function  NumberToExcelColumn
+ *
+ * + 字串修飾
+ *   - function  RemoveTrailingZeros
+ *
+ * + Base62
+ *   - const     Base62Dict
+ *   - function  StrBase62
+ *
+ * + GUID 與 UUID
+ *   - function  Guid
+ *   - function  Uuid
+ *
+ * + TGUID
+ *   - function  Tguid16
+ *   - function  Base10To62
+ *   - function  Base62To10
+ *   - function  Base62Guid
+ *   - function  Base62Tguid
+ *   - function  Tguid
+ *   - function  TguidToTime
+ *   - function  TimeToBase62Guid
+ *
+ * + JSON
+ *   - function  JsonUnscaped
+ *
+ * + HTML
+ *   - function  TitleOnlyPage
+ */
+
 class Helpers
 {
     /**
      * 檢查輸入值是否存在、不為 null、false 或空字串，返回 true 或 false
      * 
      * 0、字元 0（'0'）及空陣列或空物件視為 true
+     *
+     * $value 為未定義變數時會有警告（無法完全替代 isset() 的功能），可搭配 @ 字元隱藏警告
      *
      * @param integer|string|array|object $value
      * @return boolean
@@ -597,7 +645,7 @@ class Helpers
     /**
      * 返回 UTF-8 編碼、Unicode 及反斜線不轉義的 JSON 資料
      *
-     * @param array|object|Illuminate\Support\Collection $data
+     * @param array|object $data
      * @return string
      */
     static public function JsonUnscaped($data)
@@ -606,32 +654,23 @@ class Helpers
     }
 
     /**
-     * 返回 UTF-8 編碼、Unicode 及反斜線不轉義的 JSON Response
+     * 返回僅有 title 的空頁面 HTML 碼
      *
-     * @param array|Illuminate\Support\Collection $data
-     * @param integer $code
-     * @return Illuminate\Http\JsonResponse
+     * @param string $title
+     * @return string
      */
-    static public function JsonResponse($data, $code = 200)
+    static public function TitleOnlyPage($title)
     {
-        return response()->json($data, $code, [
-            'Content-Type' => 'application/json;charset=UTF-8',
-            'Charset' => 'utf-8'
-        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-    }
-
-    /**
-     * 返回 UTF-8 編碼的純文字 Response
-     *
-     * @param array|Illuminate\Support\Collection $data
-     * @param integer $code
-     * @return Illuminate\Http\Response
-     */
-    static public function TextResponse($data, $code = 200)
-    {
-        return response($data, $code)->withHeaders([
-            'Content-Type' => 'text/plain;charset=UTF-8',
-            'Charset' => 'utf-8'
-        ]);
+        $html =
+            "<!DOCTYPE html>\n" .
+            "<html>\n" .
+            "<head>\n" .
+            "    <meta charset=\"utf-8\">\n" .
+            "    <title>{$title}</title>\n" .
+            "</head>\n" .
+            "<body>\n" .
+            "</body>\n" .
+            "</html>";
+        return $html;
     }
 }
