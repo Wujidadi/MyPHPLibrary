@@ -9,10 +9,12 @@ require_once('Files/Type.php');
 require_once('Files/MsTime.php');
 require_once('Files/Json.php');
 require_once('Files/Format.php');
+require_once('Files/String.php');
 require_once('Files/Excel.php');
 require_once('Files/Base62.php');
 require_once('Files/Guid.php');
 require_once('Files/Tguid.php');
+require_once('Files/Cachebuster.php');
 
 header('content-type: text/plain');
 
@@ -26,6 +28,9 @@ header('content-type: text/plain');
 echo IsSafe(null) ? 'True' : 'False';
 echo PHP_EOL;
 
+echo MsTime();
+echo PHP_EOL;
+
 echo MsTimestamp();
 echo PHP_EOL;
 
@@ -33,6 +38,9 @@ echo JsonUnscaped([ 'Chinese' => 'Chang Cheng-kang', 'Quenya' => 'Taras Alatmiu√
 echo PHP_EOL;
 
 echo EmailFormat;
+echo PHP_EOL;
+
+echo RemoveTrailingZeros('59.666900');
 echo PHP_EOL;
 
 echo ExcelColumnToNumber('xfd');
@@ -62,6 +70,9 @@ echo PHP_EOL;
 echo TimeToBase62Guid('2020-03-12 12:26:20.113359');
 echo PHP_EOL;
 
+echo AssetCachebuster('css/style.css', CachebusterLength);
+echo PHP_EOL;
+
 
 /*
  *=============================
@@ -82,6 +93,9 @@ echo PHP_EOL;
 // echo PHP_EOL;
 
 // echo Helpers::EmailFormat;
+// echo PHP_EOL;
+
+// echo Helpers::RemoveTrailingZeros('59.666900');
 // echo PHP_EOL;
 
 // echo Helpers::ExcelColumnToNumber('xfd');
@@ -109,4 +123,7 @@ echo PHP_EOL;
 // echo PHP_EOL;
 
 // echo Helpers::TimeToBase62Guid('2020-03-12 12:26:20.113359');
+// echo PHP_EOL;
+
+// echo Helpers::AssetCachebuster('css/style.css', Helpers::CachebusterLength);
 // echo PHP_EOL;
