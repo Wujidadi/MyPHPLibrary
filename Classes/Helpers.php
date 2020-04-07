@@ -7,7 +7,7 @@ namespace App\Classes;
  * 目錄
  *========================================
  * + 變數檢驗
- *   - function IsSafe
+ *   - function  IsSafe
  *
  * + 時間
  *   - function  Time
