@@ -26,6 +26,8 @@ namespace App\Classes;
  * + Base62
  *   - const     Base62Dict
  *   - function  StrBase62
+ *   - function  Base10To62
+ *   - function  Base62To10
  *
  * + GUID 與 UUID
  *   - function  Guid
@@ -33,8 +35,6 @@ namespace App\Classes;
  *
  * + TGUID
  *   - function  Tguid16
- *   - function  Base10To62
- *   - function  Base62To10
  *   - function  Base62Guid
  *   - function  Base62Tguid
  *   - function  Tguid
@@ -253,6 +253,45 @@ class Helpers
     }
 
     /**
+     * 將 10 進位數字轉成 62 進位數字
+     *
+     * @param integer $num
+     * @return string
+     */
+    static public function Base10To62($num)
+    {
+        $to = 62;
+        $ret = '';
+        do
+        {
+            $ret = self::Base62Dict[bcmod($num, $to)] . $ret;
+            $num = bcdiv($num, $to);
+        }
+        while ($num > 0);
+        return $ret;
+    }
+
+    /**
+     * 將 62 進位數字轉成 10 進位數字
+     *
+     * @param integer $num
+     * @return string
+     */
+    static public function Base62To10($num)
+    {
+        $from = 62;
+        $num = strval($num);
+        $len = strlen($num);
+        $dec = 0;
+        for ($i = 0; $i < $len; $i++)
+        {
+            $pos = strpos(self::Base62Dict, $num[$i]);
+            $dec = bcadd(bcmul(bcpow($from, $len - $i - 1), $pos), $dec);
+        }
+        return $dec;
+    }
+
+    /**
      * 返回 GUID：將原本 Sujip\Guid\Guid class 中的 create 方法提取出來，直接作為函數引用
      *
      * 原作者 Sujip Thapa (https://github.com/sudiptpa/guid)
@@ -320,45 +359,6 @@ class Helpers
     {
         $entropicGuid = str_replace('.', '-', uniqid('', true)) . '-' . self::Guid();
         return $entropicGuid;
-    }
-
-    /**
-     * 將 10 進位數字轉成 62 進位數字
-     *
-     * @param integer $num
-     * @return string
-     */
-    static public function Base10To62($num)
-    {
-        $to = 62;
-        $ret = '';
-        do
-        {
-            $ret = self::Base62Dict[bcmod($num, $to)] . $ret;
-            $num = bcdiv($num, $to);
-        }
-        while ($num > 0);
-        return $ret;
-    }
-
-    /**
-     * 將 62 進位數字轉成 10 進位數字
-     *
-     * @param integer $num
-     * @return string
-     */
-    static public function Base62To10($num)
-    {
-        $from = 62;
-        $num = strval($num);
-        $len = strlen($num);
-        $dec = 0;
-        for ($i = 0; $i < $len; $i++)
-        {
-            $pos = strpos(self::Base62Dict, $num[$i]);
-            $dec = bcadd(bcmul(bcpow($from, $len - $i - 1), $pos), $dec);
-        }
-        return $dec;
     }
 
     /**
@@ -449,7 +449,7 @@ class Helpers
         foreach ($tguidHex as $key => $idhex)
         {
             // TGUID 的 7 個部份轉換成 62 進位制後，分別是 10、5、6、3、3、3、9 位數
-            switch($key)
+            switch ($key)
             {
                 case 0:
                     $pad = 10;

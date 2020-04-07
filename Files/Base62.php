@@ -27,3 +27,45 @@ if (!function_exists('StrBase62'))
         return $str;
     }
 }
+
+if (!function_exists('Base10To62'))
+{
+    /**
+     * 將 10 進位數字轉成 62 進位數字
+     *
+     * @param integer $num
+     * @return string
+     */
+    function Base10To62($num)
+    {
+        $to = 62;
+        $ret = '';
+        do {
+            $ret = Base62Dict[bcmod($num, $to)] . $ret;
+            $num = bcdiv($num, $to);
+        } while ($num > 0);
+        return $ret;
+    }
+}
+
+if (!function_exists('Base62To10'))
+{
+    /**
+     * 將 62 進位數字轉成 10 進位數字
+     *
+     * @param integer $num
+     * @return string
+     */
+    function Base62To10($num)
+    {
+        $from = 62;
+        $num = strval($num);
+        $len = strlen($num);
+        $dec = 0;
+        for ($i = 0; $i < $len; $i++) {
+            $pos = strpos(Base62Dict, $num[$i]);
+            $dec = bcadd(bcmul(bcpow($from, $len - $i - 1), $pos), $dec);
+        }
+        return $dec;
+    }
+}

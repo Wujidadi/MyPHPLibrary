@@ -31,48 +31,6 @@ if (defined('Base62Dict') && function_exists('Guid'))
         }
     }
 
-    if (!function_exists('Base10To62'))
-    {
-        /**
-         * 將 10 進位數字轉成 62 進位數字
-         *
-         * @param integer $num
-         * @return string
-         */
-        function Base10To62($num)
-        {
-            $to = 62;
-            $ret = '';
-            do {
-                $ret = Base62Dict[bcmod($num, $to)] . $ret;
-                $num = bcdiv($num, $to);
-            } while ($num > 0);
-            return $ret;
-        }
-    }
-
-    if (!function_exists('Base62To10'))
-    {
-        /**
-         * 將 62 進位數字轉成 10 進位數字
-         *
-         * @param integer $num
-         * @return string
-         */
-        function Base62To10($num)
-        {
-            $from = 62;
-            $num = strval($num);
-            $len = strlen($num);
-            $dec = 0;
-            for ($i = 0; $i < $len; $i++) {
-                $pos = strpos(Base62Dict, $num[$i]);
-                $dec = bcadd(bcmul(bcpow($from, $len - $i - 1), $pos), $dec);
-            }
-            return $dec;
-        }
-    }
-
     if (!function_exists('Base62Guid'))
     {
         if (function_exists('Base10To62'))
@@ -98,7 +56,7 @@ if (defined('Base62Dict') && function_exists('Guid'))
                 foreach ($guidHex as $key => $idhex)
                 {
                     // GUID 的 5 個部份轉換成 62 進位制後，分別是 6、3、3、3、9 位數
-                    switch($key)
+                    switch ($key)
                     {
                         case 0:
                             $pad = 6;
