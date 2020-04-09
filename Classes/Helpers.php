@@ -42,7 +42,7 @@ namespace App\Classes;
  *   - function  TimeToBase62Guid
  *
  * + JSON
- *   - function  JsonUnscaped
+ *   - function  JsonUnescaped
  *
  * + HTML
  *   - function  TitleOnlyPage
@@ -652,7 +652,7 @@ class Helpers
      * @param array|object $data
      * @return string
      */
-    static public function JsonUnscaped($data)
+    static public function JsonUnescaped($data)
     {
         return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }

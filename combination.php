@@ -14,7 +14,7 @@ echo PHP_EOL;
 echo MsTimestamp();
 echo PHP_EOL;
 
-echo JsonUnscaped([ 'Chinese' => 'Chang Cheng-kang', 'Quenya' => 'Taras Alatmiuë' ]);
+echo JsonUnescaped([ 'Chinese' => 'Chang Cheng-kang', 'Quenya' => 'Taras Alatmiuë' ]);
 echo PHP_EOL;
 
 echo EmailFormat;

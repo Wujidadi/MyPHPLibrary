@@ -34,7 +34,7 @@ echo PHP_EOL;
 echo MsTimestamp();
 echo PHP_EOL;
 
-echo JsonUnscaped([ 'Chinese' => 'Chang Cheng-kang', 'Quenya' => 'Taras Alatmiuë' ]);
+echo JsonUnescaped([ 'Chinese' => 'Chang Cheng-kang', 'Quenya' => 'Taras Alatmiuë' ]);
 echo PHP_EOL;
 
 echo EmailFormat;
@@ -89,7 +89,7 @@ echo PHP_EOL;
 // echo Helpers::Timestamp();
 // echo PHP_EOL;
 
-// echo Helpers::JsonUnscaped(['Chinese' => 'Chang Cheng-kang', 'Quenya' => 'Taras Alatmiuë']);
+// echo Helpers::JsonUnescaped(['Chinese' => 'Chang Cheng-kang', 'Quenya' => 'Taras Alatmiuë']);
 // echo PHP_EOL;
 
 // echo Helpers::EmailFormat;
