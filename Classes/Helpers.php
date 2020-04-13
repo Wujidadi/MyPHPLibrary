@@ -43,6 +43,7 @@ namespace App\Classes;
  *
  * + JSON
  *   - function  JsonUnescaped
+ *   - function  JsonPrettyPrinted
  *
  * + HTML
  *   - function  TitleOnlyPage
@@ -655,6 +656,17 @@ class Helpers
     static public function JsonUnescaped($data)
     {
         return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    }
+
+    /**
+     * 返回 UTF-8 編碼、Unicode 及反斜線不轉義且格式化的 JSON 資料
+     *
+     * @param array|object $data
+     * @return string
+     */
+    static public function JsonPrettyPrinted($data)
+    {
+        return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
     }
 
     /**
