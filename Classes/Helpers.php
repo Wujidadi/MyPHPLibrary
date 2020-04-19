@@ -456,7 +456,7 @@ class Helpers
         foreach ($guidHex as $key => $idhex)
         {
             // GUID 的 5 個部份轉換成 62 進位制後，分別是 6、3、3、3、9 位數
-            switch($key)
+            switch ($key)
             {
                 case 0:
                     $pad = 6;

@@ -129,7 +129,7 @@ if (defined('Base62Dict') && function_exists('Guid'))
                 foreach ($tguidHex as $key => $idhex)
                 {
                     // TGUID 的 7 個部份轉換成 62 進位制後，分別是 10、5、6、3、3、3、9 位數
-                    switch($key)
+                    switch ($key)
                     {
                         case 0:
                             $pad = 10;
