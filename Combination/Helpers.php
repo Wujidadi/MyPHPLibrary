@@ -858,5 +858,8 @@ if (!function_exists('AssetCachebuster'))
 
 if (!defined('CachebusterLength'))
 {
+    /**
+     * 配合 AssetCachebuster 方法所使用的隨機 Base62 字串長度
+     */
     define('CachebusterLength', 24);
 }
