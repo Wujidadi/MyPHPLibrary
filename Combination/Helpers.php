@@ -14,6 +14,7 @@
  * + 數字及文字格式
  *   - const     EmailFormat
  *   - function  SecondsToEnglishString
+ *   - function  CheckYmdHis 
  *
  * + Excel 欄位名稱與數字互轉（變相的 26 進位）
  *   - function  ExcelColumnToNumber
@@ -199,6 +200,57 @@ if (!function_exists('SecondsToEnglishString'))
         $String = preg_replace('/, ([^,]+)$/', ' and $1', $String);
 
         return $String;
+    }
+}
+
+if (!function_exists('CheckYmdHis'))
+{
+    /**
+     * 檢查時間字串是否為合法的 `Y-m-d H:i:s` 格式
+     *
+     * @param string $TimeString
+     * @return boolean
+     */
+    function CheckYmdHis($TimeString)
+    {
+        $TimeFormat = '/^\d{1,}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/';
+
+        if (!preg_match($TimeFormat, $TimeString))
+        {
+            return false;
+        }
+        else
+        {
+            $FullArray = explode(' ', $TimeString);
+            $Date = $FullArray[0];
+            $Time = $FullArray[1];
+
+            $DateArray = explode('-', $Date);
+            $Year  = (int) $DateArray[0];
+            $Month = (int) $DateArray[1];
+            $Day   = (int) $DateArray[2];
+
+            $TimeArray = explode(':', $Time);
+            $Hour   = (int) $TimeArray[0];
+            $Minute = (int) $TimeArray[1];
+            $Second = (int) $TimeArray[2];
+
+            if (($Month < 1 || $Month > 12) ||
+                ($Day < 1) ||
+                (in_array($Month, [1, 3, 5, 7, 8, 10, 12]) && $Day > 31) ||
+                (in_array($Month, [4, 6, 9, 11]) && $Day > 30) ||
+                ($Month === 2 && $Day > 29) ||
+                ($Hour < 0 || $Hour > 23) ||
+                ($Minute < 0 || $Minute > 59) ||
+                ($Second < 0 || $Second > 59))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }
 
