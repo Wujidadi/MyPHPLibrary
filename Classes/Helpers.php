@@ -16,7 +16,7 @@ namespace App\Classes;
  * + 數字及文字格式
  *   - const     EmailFormat
  *   - function  SecondsToEnglishString
- *   - function  CheckYmdHis 
+ *   - function  CheckYmdHis
  *
  * + Excel 欄位名稱與數字互轉（變相的 26 進位）
  *   - function  ExcelColumnToNumber
