@@ -95,17 +95,28 @@ class Helpers
     }
 
     /**
-     * 返回微秒級時間戳
+     * 返回當下的微秒級時間戳；有指定時間字串時，返回該字串的時間戳
      *
+     * @param string|null $TimeString
      * @return string
      */
-    static public function Timestamp()
+    static public function Timestamp($TimeString = null)
     {
-        $time = explode(' ', microtime());
-        $s = $time[1];
-        $ms = rtrim($time[0], '0');
-        $ms = preg_replace('/^0/', '', $ms);
-        $mtime = $s . $ms;
+        if (!is_null($TimeString))
+        {
+            $time = explode('.', $TimeString);
+            $s = strtotime($time[0]);
+            $ms = $time[1];
+            $mtime = $s . '.' . $ms;
+        }
+        else
+        {
+            $time = explode(' ', microtime());
+            $s = $time[1];
+            $ms = rtrim($time[0], '0');
+            $ms = preg_replace('/^0/', '', $ms);
+            $mtime = $s . $ms;
+        }
         return $mtime;
     }
 
@@ -113,7 +124,7 @@ class Helpers
      * 電子郵件信箱的格式正規表示法
      */
     const EmailFormat = // 前綴（Local name）
-                        '/^[\x20-\x21\x23-\x2d\x2f-\x3f\x41-\x5a\x5e-\x7e][\x20-\x21\x23-\x3f\x41-\x5a\x5e-\x7e]+[\x20-\x21\x23-\x2d\x2f-\x3f\x41-\x5a\x5e-\x7e]'
+                        '/^[\x20-\x21\x23-\x2d\x2f-\x3f\x41-\x5a\x5e-\x7e][\x20-\x21\x23-\x3f\x41-\x5a\x5e-\x7e]*[\x20-\x21\x23-\x2d\x2f-\x3f\x41-\x5a\x5e-\x7e]'
                         // 小老鼠（At sign）
                       . '@'
                         // 後綴（Domain name）：至少一級域名

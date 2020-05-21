@@ -18,17 +18,28 @@ if (!function_exists('MsTime'))
 if (!function_exists('MsTimestamp'))
 {
     /**
-     * 返回微秒級時間戳
+     * 返回當下的微秒級時間戳；有指定時間字串時，返回該字串的時間戳
      *
+     * @param string|null $TimeString
      * @return string
      */
-    function MsTimestamp()
+    function MsTimestamp($TimeString = null)
     {
-        $time = explode(' ', microtime());
-        $s = $time[1];
-        $ms = rtrim($time[0], '0');
-        $ms = preg_replace('/^0/', '', $ms);
-        $mtime = $s . $ms;
+        if (!is_null($TimeString))
+        {
+            $time = explode('.', $TimeString);
+            $s = strtotime($time[0]);
+            $ms = $time[1];
+            $mtime = $s . '.' . $ms;
+        }
+        else
+        {
+            $time = explode(' ', microtime());
+            $s = $time[1];
+            $ms = rtrim($time[0], '0');
+            $ms = preg_replace('/^0/', '', $ms);
+            $mtime = $s . $ms;
+        }
         return $mtime;
     }
 }
