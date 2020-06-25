@@ -102,15 +102,16 @@ if (!function_exists('MsTimestamp'))
      * 返回當下的微秒級時間戳；有指定時間字串時，返回該字串的時間戳
      *
      * @param string|null $TimeString
-     * @return string
+     * @return float
      */
     function MsTimestamp($TimeString = null)
     {
         if (!is_null($TimeString))
         {
-            $time = explode('.', $TimeString);
+            $time = explode('+', $TimeString);
+            $time = explode('.', $time[0]);
             $s = strtotime($time[0]);
-            $ms = $time[1];
+            $ms = $time[1] ?? '000000';
             $mtime = $s . '.' . $ms;
         }
         else
@@ -121,7 +122,7 @@ if (!function_exists('MsTimestamp'))
             $ms = preg_replace('/^0/', '', $ms);
             $mtime = $s . $ms;
         }
-        return $mtime;
+        return (float) $mtime;
     }
 }
 
@@ -130,13 +131,7 @@ if (!defined('EmailFormat'))
     /**
      * 電子郵件信箱的格式正規表示法
      */
-    define('EmailFormat', // 前綴（Local name）
-                          '/^[\x20-\x21\x23-\x2d\x2f-\x3f\x41-\x5a\x5e-\x7e][\x20-\x21\x23-\x3f\x41-\x5a\x5e-\x7e]*[\x20-\x21\x23-\x2d\x2f-\x3f\x41-\x5a\x5e-\x7e]'
-                          // 小老鼠（At sign）
-                        . '@'
-                          // 後綴（Domain name）：至少一級域名
-                        . '[0-9A-Za-z][0-9A-Za-z\-\.]+\.'
-                        . '[0-9A-Za-z\-\.]+[0-9A-Za-z]$/');
+    define('EmailFormat', '/^(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){255,})(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){65,}@)(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22))(?:\.(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-[a-z0-9]+)*\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-[a-z0-9]+)*)|(?:\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\]))$/iD');
 }
 
 if (!function_exists('SecondsToEnglishString'))

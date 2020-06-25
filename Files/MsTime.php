@@ -21,15 +21,16 @@ if (!function_exists('MsTimestamp'))
      * 返回當下的微秒級時間戳；有指定時間字串時，返回該字串的時間戳
      *
      * @param string|null $TimeString
-     * @return string
+     * @return float
      */
     function MsTimestamp($TimeString = null)
     {
         if (!is_null($TimeString))
         {
-            $time = explode('.', $TimeString);
+            $time = explode('+', $TimeString);
+            $time = explode('.', $time[0]);
             $s = strtotime($time[0]);
-            $ms = $time[1];
+            $ms = $time[1] ?? '000000';
             $mtime = $s . '.' . $ms;
         }
         else
@@ -40,6 +41,6 @@ if (!function_exists('MsTimestamp'))
             $ms = preg_replace('/^0/', '', $ms);
             $mtime = $s . $ms;
         }
-        return $mtime;
+        return (float) $mtime;
     }
 }
