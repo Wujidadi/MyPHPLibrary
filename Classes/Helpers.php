@@ -83,15 +83,28 @@ class Helpers
     }
 
     /**
-     * 返回微秒級時間字串
+     * 返回微秒級時間字串；有指定時間戳時，返回時間戳對應的時間字串
      *
+     * @param string|int|null $TimeString
      * @return string
      */
-    static public function Time()
+    static public function Time($Timestamp = null)
     {
-        $datetime = new \DateTime();
-        $time = $datetime->format('Y-m-d H:i:s.u');
-        return $time;
+        if (!is_null($Timestamp))
+        {
+            $Timestamp = (string) $Timestamp;
+            $date = explode('.', $Timestamp);
+            $s = (int) $date[0];
+            $ms = isset($date[1]) ? rtrim($date[1], '0') : '0';
+            $time = ($ms != 0) ? date('Y-m-d H:i:s', $s) . '.' . $ms : date('Y-m-d H:i:s', $s);
+            return $time;
+        }
+        else
+        {
+            $datetime = new \DateTime();
+            $time = $datetime->format('Y-m-d H:i:s.u');
+            return $time;
+        }
     }
 
     /**
@@ -107,8 +120,8 @@ class Helpers
             $time = explode('+', $TimeString);
             $time = explode('.', $time[0]);
             $s = strtotime($time[0]);
-            $ms = $time[1] ?? '000000';
-            $mtime = $s . '.' . $ms;
+            $ms = isset($time[1]) ? rtrim($time[1], '0') : '0';
+            $mtime = ($ms != 0) ? ($s . '.' . $ms) : $s;
         }
         else
         {
