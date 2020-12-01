@@ -47,6 +47,7 @@ namespace App\Classes;
  * + JSON
  *   - function  JsonUnescaped
  *   - function  JsonPrettyPrinted
+ *   - function  JsonEmptyObject
  *
  * + HTML
  *   - function  TitleOnlyPage
@@ -877,6 +878,17 @@ class Helpers
     static public function JsonPrettyPrinted($data)
     {
         return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * 將 JSON 字串中的「"{}"」兩側的雙引號去除，使成為標準的 JSON 空物件
+     *
+     * @param string $json
+     * @return string
+     */
+    static public function JsonEmptyObject($json)
+    {
+        return preg_replace('/\"\{\}\"/', '{}', $json);
     }
 
     /**

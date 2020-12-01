@@ -45,6 +45,7 @@
  * + JSON
  *   - function  JsonUnescaped
  *   - function  JsonPrettyPrinted
+ *   - function  JsonEmptyObject
  *
  * + HTML
  *   - function  TitleOnlyPage
@@ -944,6 +945,20 @@ if (!function_exists('JsonPrettyPrinted'))
     function JsonPrettyPrinted($data)
     {
         return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    }
+}
+
+if (!function_exists('JsonEmptyObject'))
+{
+    /**
+     * 將 JSON 字串中的「"{}"」兩側的雙引號去除，使成為標準的 JSON 空物件
+     *
+     * @param string $json
+     * @return string
+     */
+    function JsonEmptyObject($json)
+    {
+        return preg_replace('/\"\{\}\"/', '{}', $json);
     }
 }
 
