@@ -14,10 +14,10 @@ if (!function_exists('IsSafe'))
     {
         switch (true)
         {
-            case (isset($value) && !is_null($value) && !empty($value)):
-            case (isset($value) && !is_null($value) && empty($value) && $value === 0):
-            case (isset($value) && !is_null($value) && empty($value) && $value === '0'):
-            case (isset($value) && !is_null($value) && empty($value) && is_array($value)):
+            case ($value !== null && $value != null):
+            case ($value !== null && $value === 0):
+            case ($value !== null && $value === '0'):
+            case ($value !== null && $value == null && is_array($value)):
                 return true;
 
             default:

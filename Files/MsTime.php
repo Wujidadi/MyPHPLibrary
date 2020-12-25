@@ -10,7 +10,7 @@ if (!function_exists('MsTime'))
      */
     function MsTime($Timestamp = null)
     {
-        if (!is_null($Timestamp))
+        if ($TimeString !== null)
         {
             $Timestamp = (string) $Timestamp;
             $date = explode('.', $Timestamp);
@@ -38,7 +38,7 @@ if (!function_exists('MsTimestamp'))
      */
     function MsTimestamp($TimeString = null)
     {
-        if (!is_null($TimeString))
+        if ($TimeString !== null)
         {
             $time = explode('+', $TimeString);
             $time = explode('.', $time[0]);

@@ -144,7 +144,7 @@ if (!function_exists('ChineseWeekDate'))
      */
     function ChineseWeekDate($Date = null, $Gap = true, $Prefix = 'x')
     {
-        if (is_null($Date))
+        if ($Date === null)
         {
             $Time = time();
         }

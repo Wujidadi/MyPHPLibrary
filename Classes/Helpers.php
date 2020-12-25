@@ -73,10 +73,10 @@ class Helpers
     {
         switch (true)
         {
-            case (isset($value) && !is_null($value) && !empty($value)):
-            case (isset($value) && !is_null($value) && empty($value) && $value === 0):
-            case (isset($value) && !is_null($value) && empty($value) && $value === '0'):
-            case (isset($value) && !is_null($value) && empty($value) && is_array($value)):
+            case ($value !== null && $value != null):
+            case ($value !== null && $value === 0):
+            case ($value !== null && $value === '0'):
+            case ($value !== null && $value == null && is_array($value)):
                 return true;
 
             default:
@@ -92,7 +92,7 @@ class Helpers
      */
     static public function Time($Timestamp = null)
     {
-        if (!is_null($Timestamp))
+        if ($TimeString !== null)
         {
             $Timestamp = (string) $Timestamp;
             $date = explode('.', $Timestamp);
@@ -117,7 +117,7 @@ class Helpers
      */
     static public function Timestamp($TimeString = null)
     {
-        if (!is_null($TimeString))
+        if ($TimeString !== null)
         {
             $time = explode('+', $TimeString);
             $time = explode('.', $time[0]);
@@ -271,7 +271,7 @@ class Helpers
      */
     static public function ChineseWeekDate($Date = null, $Gap = true, $Prefix = 'x')
     {
-        if (is_null($Date))
+        if ($Date === null)
         {
             $Time = time();
         }
