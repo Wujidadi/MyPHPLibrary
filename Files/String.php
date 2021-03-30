@@ -1,5 +1,24 @@
 <?php
 
+if (!function_exists('Blank'))
+{
+    /**
+     * 產生指定數目的空格
+     *
+     * @param integer $Number
+     * @return string
+     */
+    function Blank($Number = 1)
+    {
+        $Blank = '';
+        for ($i = 0; $i < $Number; $i++)
+        {
+            $Blank .= ' ';
+        }
+        return $Blank;
+    }
+}
+
 if (!function_exists('RemoveTrailingZeros'))
 {
     /**

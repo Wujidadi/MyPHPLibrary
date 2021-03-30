@@ -21,7 +21,8 @@
  *   - function  ExcelColumnToNumber
  *   - function  NumberToExcelColumn
  *
- * + 字串修飾
+ * + 文字及字元和字串處理
+ *   - function  Blank
  *   - function  RemoveTrailingZeros
  *
  * + Base62
@@ -88,7 +89,7 @@ if (!function_exists('MsTime'))
     /**
      * 返回微秒級時間字串；有指定時間戳時，返回時間戳對應的時間字串
      *
-     * @param string|int|null $TimeString
+     * @param string|int|null $Timestamp
      * @return string
      */
     function MsTime($Timestamp = null)
@@ -439,6 +440,25 @@ if (!function_exists('NumberToExcelColumn'))
         while ($Number > 0);
 
         return $Column;
+    }
+}
+
+if (!function_exists('Blank'))
+{
+    /**
+     * 產生指定數目的空格
+     *
+     * @param integer $Number
+     * @return string
+     */
+    function Blank($Number = 1)
+    {
+        $Blank = '';
+        for ($i = 0; $i < $Number; $i++)
+        {
+            $Blank .= ' ';
+        }
+        return $Blank;
     }
 }
 

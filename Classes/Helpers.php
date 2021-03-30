@@ -23,7 +23,8 @@ namespace App\Classes;
  *   - function  ExcelColumnToNumber
  *   - function  NumberToExcelColumn
  *
- * + 字串修飾
+ * + 文字及字元和字串處理
+ *   - function  Blank
  *   - function  RemoveTrailingZeros
  *
  * + Base62
@@ -87,12 +88,12 @@ class Helpers
     /**
      * 返回微秒級時間字串；有指定時間戳時，返回時間戳對應的時間字串
      *
-     * @param string|int|null $TimeString
+     * @param string|int|null $Timestamp
      * @return string
      */
     static public function Time($Timestamp = null)
     {
-        if ($TimeString !== null)
+        if ($Timestamp !== null)
         {
             $Timestamp = (string) $Timestamp;
             $date = explode('.', $Timestamp);
@@ -417,6 +418,22 @@ class Helpers
         while ($Number > 0);
 
         return $Column;
+    }
+
+    /**
+     * 產生指定數目的空格
+     *
+     * @param integer $Number
+     * @return string
+     */
+    static public function Blank($Number = 1)
+    {
+        $Blank = '';
+        for ($i = 0; $i < $Number; $i++)
+        {
+            $Blank .= ' ';
+        }
+        return $Blank;
     }
 
     /**

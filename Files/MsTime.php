@@ -5,12 +5,12 @@ if (!function_exists('MsTime'))
     /**
      * 返回微秒級時間字串；有指定時間戳時，返回時間戳對應的時間字串
      *
-     * @param string|int|null $TimeString
+     * @param string|int|null $Timestamp
      * @return string
      */
     function MsTime($Timestamp = null)
     {
-        if ($TimeString !== null)
+        if ($Timestamp !== null)
         {
             $Timestamp = (string) $Timestamp;
             $date = explode('.', $Timestamp);
