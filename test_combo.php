@@ -6,6 +6,7 @@ require_once('Files/MsTime.php');
 require_once('Files/Json.php');
 require_once('Files/Format.php');
 require_once('Files/String.php');
+require_once('Files/Regex.php');
 require_once('Files/Excel.php');
 require_once('Files/Base62.php');
 require_once('Files/Guid.php');
@@ -37,6 +38,9 @@ echo 'A' . Blank(8) . 'B';
 echo PHP_EOL;
 
 echo RemoveTrailingZeros('59.666900');
+echo PHP_EOL;
+
+echo CombineRegex($regSeg);
 echo PHP_EOL;
 
 echo ExcelColumnToNumber('xfd');

@@ -27,6 +27,9 @@ namespace App\Classes;
  *   - function  Blank
  *   - function  RemoveTrailingZeros
  *
+ * + 正規表示法
+ *   - function  CombineRegex
+ *
  * + Base62
  *   - const     Base62Dict
  *   - function  StrBase62
@@ -457,6 +460,26 @@ class Helpers
             ],
             $strnum
         );
+    }
+
+    /**
+     * 輸入正規表示法字串陣列，輸出組合後的單一正規表示法字串
+     *
+     * @param array $segments
+     * @return string
+     */
+    static public function CombineRegex($segments)
+    {
+        $combo = [];
+
+        foreach ($segments as $reg)
+        {
+            $combo[] = preg_replace(['/^\//', '/\/$/'], '', $reg);
+        }
+
+        $combo = '/' . implode('|', $combo) . '/';
+
+        return $combo;
     }
 
     /**

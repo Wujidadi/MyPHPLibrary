@@ -25,7 +25,13 @@ echo PHP_EOL;
 echo Helpers::EmailFormat;
 echo PHP_EOL;
 
+echo 'A' . Helpers::Blank(13) . 'B';
+echo PHP_EOL;
+
 echo Helpers::RemoveTrailingZeros('59.666900');
+echo PHP_EOL;
+
+echo Helpers::CombineRegex($regSeg);
 echo PHP_EOL;
 
 echo Helpers::ExcelColumnToNumber('xfd');

@@ -4,6 +4,18 @@ header('content-type: text/plain');
 
 $mode = $_GET['mode'] ?? 'combo';
 
+// 正規表示法陣列測試
+$regSeg = [
+    '/^\/favicon\.(?:png|ico)$/',
+    '/^\/css\//',
+    '/\.css$/',
+    '/^\/js\//',
+    '/\.js$/',
+    '/^\/lib\//',
+    '/^\/storage\//',
+    '/\/*manifest\.json$/'
+];
+
 switch (strtolower($mode))
 {
     case 'combo':
