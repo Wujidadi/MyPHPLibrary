@@ -5,7 +5,7 @@ if (defined('Base62Dict') && function_exists('Guid'))
     if (!function_exists('Uuid'))
     {
         /**
-         * 將 PHP 內建函數 uniqid() 產生的 ID（不含熵）直接插入到 GUID 前面，並把被擠出去的原 GUID 字元刪除，維持 32 位數，並保留連字號
+         * 將 PHP 內建函數 `uniqid()` 產生的 ID（不含熵）直接插入到 GUID 前面，並把被擠出去的原 GUID 字元刪除，維持 32 位數，並保留連字號
          *
          * @return string
          */
@@ -20,7 +20,7 @@ if (defined('Base62Dict') && function_exists('Guid'))
     if (!function_exists('Tguid16'))
     {
         /**
-         * 產生 16 進位 GUID，再將 uniqid() 產生的 ID（含熵）插入 GUID 前面，並以連字號相連；整個字串長達 14 + 8 + 32 = 54 位數，含連字號為 60 位數
+         * 產生 16 進位 GUID，再將 `uniqid()` 產生的 ID（含熵）插入 GUID 前面，並以連字號相連；整個字串長達 14 + 8 + 32 = 54 位數，含連字號為 60 位數
          *
          * @return string
          */
@@ -38,7 +38,7 @@ if (defined('Base62Dict') && function_exists('Guid'))
             /**
              * 將 16 進位的 GUID 轉為 62 進位；轉換完畢的字串有 24 位數，含連字號有 28 位數
              *
-             * @param boolean $dash
+             * @param  boolean $dash 是否輸出連字號
              * @return string
              */
             function Base62Guid($dash = false)
@@ -111,7 +111,7 @@ if (defined('Base62Dict') && function_exists('Guid'))
             /**
              * 將 16 進位的 TGUID 轉為 62 進位；轉換完畢的字串有 39 位數，含連字號有 45 位數
              *
-             * @param boolean $dash
+             * @param  boolean $dash 是否輸出連字號
              * @return string
              */
             function Base62Tguid($dash = false)
@@ -206,9 +206,9 @@ if (defined('Base62Dict') && function_exists('Guid'))
              *
              * 生命、宇宙及萬事萬物的終極答案（Answer to the Ultimate Question of Life, The Universe, and Everything）！
              *
-             * 原名 Base62Tguid42 (base62_tguid42)
+             * 原名 `Base62Tguid42` (`base62_tguid42`)
              *
-             * @param boolean $dash
+             * @param  boolean $dash 是否輸出連字號
              * @return string
              */
             function Tguid($dash = false)
@@ -242,9 +242,9 @@ if (defined('Base62Dict') && function_exists('Guid'))
         /**
          * 由 62 進位 TGUID 反推其時間；可檢測的最大時間為 3555-04-08 14:09:22.133048（zzzzzzzzzz）
          *
-         * 原名 base62_guid_to_time
+         * 原名 `base62_guid_to_time`
          *
-         * @param integer $tguid
+         * @param  integer $tguid TGUID
          * @return string
          */
         function TguidToTime($tguid = 0)
@@ -284,9 +284,9 @@ if (defined('Base62Dict') && function_exists('Guid'))
         /**
          * 給定時間，轉成類似 62 進位 TGUID 的前 10 位數字
          *
-         * 原名 time_to_base62_guid
+         * 原名 `time_to_base62_guid`
          *
-         * @param string $time
+         * @param  string $time 時間字串
          * @return string
          */
         function TimeToBase62Guid($time = '')

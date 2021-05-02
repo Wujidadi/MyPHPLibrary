@@ -5,8 +5,8 @@ if (!function_exists('ExcelColumnToNumber'))
     /**
      * 將 Excel A1 參照樣式中的欄位序號轉為數字（Office 2019 的最大值為 XFD = 16384）
      *
-     * @param string $Column
-     * @return int|bool
+     * @param  string $Column 欄位序號
+     * @return integer|boolean
      */
     function ExcelColumnToNumber($Column)
     {
@@ -38,7 +38,7 @@ if (!function_exists('NumberToExcelColumn'))
     /**
      * 將數字轉為 Excel A1 參照樣式中的欄位序號（Office 2019 的最大值為 XFD = 16384）
      *
-     * @param int $Number
+     * @param  integer $Number 欄位序數
      * @return string
      */
     function NumberToExcelColumn($Number)

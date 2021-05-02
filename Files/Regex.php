@@ -5,7 +5,7 @@ if (!function_exists('CombineRegex'))
     /**
      * 輸入正規表示法字串陣列，輸出組合後的單一正規表示法字串
      *
-     * @param array $segments
+     * @param  array $segments 正規表示法字串陣列
      * @return string
      */
     function CombineRegex($segments)

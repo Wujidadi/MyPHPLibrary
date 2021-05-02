@@ -11,9 +11,9 @@ if (!function_exists('StrBase62'))
     /**
      * 產生隨機 Base62 字串
      *
-     * 原名 str_base62
+     * 原名 `str_base62`
      *
-     * @param integer $length
+     * @param  integer $length 字串長度
      * @return string
      */
     function StrBase62($length = 8)
@@ -33,7 +33,7 @@ if (!function_exists('Base10To62'))
     /**
      * 將 10 進位數字轉成 62 進位數字
      *
-     * @param integer $num
+     * @param  integer $num 10 進位數字
      * @return string
      */
     function Base10To62($num)
@@ -53,7 +53,7 @@ if (!function_exists('Base62To10'))
     /**
      * 將 62 進位數字轉成 10 進位數字
      *
-     * @param integer $num
+     * @param  integer $num 62 進位數字
      * @return string
      */
     function Base62To10($num)

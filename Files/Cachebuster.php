@@ -7,8 +7,8 @@ if (function_exists('StrBase62'))
         /**
          * 在指定的資源路徑後加上指定長度的隨機 Base62 字串
          *
-         * @param string $path
-         * @param integer $length
+         * @param  string  $path   資源路徑
+         * @param  integer $length Base62 字串長度
          * @return string
          */
         function AssetCachebuster($path, $length = 0)
@@ -34,7 +34,9 @@ if (function_exists('StrBase62'))
 if (!defined('CachebusterLength'))
 {
     /**
-     * 配合 AssetCachebuster 方法所使用的隨機 Base62 字串長度
+     * 配合 `AssetCachebuster` 方法所使用的隨機 Base62 字串長度
+     *
+     * @var integer
      */
     define('CachebusterLength', 24);
 }

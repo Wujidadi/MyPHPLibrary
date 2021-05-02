@@ -5,7 +5,7 @@ if (!function_exists('Blank'))
     /**
      * 產生指定數目的空格
      *
-     * @param integer $Number
+     * @param  integer $Number 空格數目
      * @return string
      */
     function Blank($Number = 1)
@@ -24,9 +24,9 @@ if (!function_exists('RemoveTrailingZeros'))
     /**
      * 給定經格式化後的數字字串，去除小數點後的 0
      *
-     * 應用於以 number_format() 加上千分位符號的數字
+     * 應使用於以 `number_format()` 加上千分位符號的數字
      *
-     * @param string $strnum
+     * @param  string $strnum 格式化數字字串
      * @return string
      */
     function RemoveTrailingZeros($strnum)

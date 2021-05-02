@@ -2,6 +2,12 @@
 
 if (!function_exists('TitleOnlyPage'))
 {
+    /**
+     * 返回僅有 title 的空頁面 HTML 碼
+     *
+     * @param  string $title 頁面標題
+     * @return string
+     */
     function TitleOnlyPage($title)
     {
         $html =

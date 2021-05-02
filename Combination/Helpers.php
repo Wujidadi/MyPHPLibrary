@@ -4,6 +4,7 @@
  *========================================
  * 目錄
  *========================================
+ *
  * + 變數檢驗
  *   - function  IsSafe
  *
@@ -62,13 +63,13 @@
 if (!function_exists('IsSafe'))
 {
     /**
-     * 檢查輸入值是否存在、不為 null、false 或空字串，返回 true 或 false
+     * 檢查輸入值是否存在、不為 `null`、`false` 或空字串，返回 `true` 或 `false`
      * 
-     * 0、字元 0（'0'）及空陣列或空物件視為 true
+     * 0、字元 0（`'0'`）及空陣列或空物件視為 `true`
      *
-     * $value 為未定義變數時會有警告（無法完全替代 isset() 的功能），可搭配 @ 字元隱藏警告
+     * $value 為未定義變數時會有警告（無法完全替代 `isset()` 的功能），可搭配 `@` 字元隱藏警告
      *
-     * @param integer|string|array|object $value
+     * @param  integer|string|array|object $value 輸入值
      * @return boolean
      */
     function IsSafe($value = null)
@@ -92,7 +93,7 @@ if (!function_exists('MsTime'))
     /**
      * 返回微秒級時間字串；有指定時間戳時，返回時間戳對應的時間字串
      *
-     * @param string|int|null $Timestamp
+     * @param  string|integer|null $Timestamp 時間戳
      * @return string
      */
     function MsTime($Timestamp = null)
@@ -120,8 +121,8 @@ if (!function_exists('MsTimestamp'))
     /**
      * 返回當下的微秒級時間戳；有指定時間字串時，返回該字串的時間戳
      *
-     * @param string|null $TimeString
-     * @return float
+     * @param  string|null $TimeString 時間字串
+     * @return double
      */
     function MsTimestamp($TimeString = null)
     {
@@ -149,6 +150,8 @@ if (!defined('EmailFormat'))
 {
     /**
      * 電子郵件信箱的格式正規表示法
+     *
+     * @var string
      */
     define('EmailFormat', '/^(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){255,})(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){65,}@)(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22))(?:\.(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-[a-z0-9]+)*\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-[a-z0-9]+)*)|(?:\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\]))$/iD');
 }
@@ -158,7 +161,7 @@ if (!function_exists('CheckYmdHis'))
     /**
      * 檢查時間字串是否為合法的 `Y-m-d H:i:s` 格式
      *
-     * @param string $TimeString
+     * @param  string $TimeString 時間字串
      * @return boolean
      */
     function CheckYmdHis($TimeString)
@@ -209,7 +212,7 @@ if (!function_exists('SecondsToEnglishString'))
     /**
      * 將秒數轉換成秒、分、時或日等各種時間單位（英文）
      *
-     * @param integer $Seconds
+     * @param  integer $Seconds 秒數
      * @return string|null
      */
     function SecondsToEnglishString($Seconds)
@@ -355,8 +358,8 @@ if (!function_exists('ExcelColumnToNumber'))
     /**
      * 將 Excel A1 參照樣式中的欄位序號轉為數字（Office 2019 的最大值為 XFD = 16384）
      *
-     * @param string $Column
-     * @return int|bool
+     * @param  string $Column 欄位序號
+     * @return integer|boolean
      */
     function ExcelColumnToNumber($Column)
     {
@@ -388,7 +391,7 @@ if (!function_exists('NumberToExcelColumn'))
     /**
      * 將數字轉為 Excel A1 參照樣式中的欄位序號（Office 2019 的最大值為 XFD = 16384）
      *
-     * @param int $Number
+     * @param  integer $Number 欄位序數
      * @return string
      */
     function NumberToExcelColumn($Number)
@@ -451,7 +454,7 @@ if (!function_exists('Blank'))
     /**
      * 產生指定數目的空格
      *
-     * @param integer $Number
+     * @param  integer $Number 空格數目
      * @return string
      */
     function Blank($Number = 1)
@@ -470,9 +473,9 @@ if (!function_exists('RemoveTrailingZeros'))
     /**
      * 給定經格式化後的數字字串，去除小數點後的 0
      *
-     * 應用於以 number_format() 加上千分位符號的數字
+     * 應使用於以 `number_format()` 加上千分位符號的數字
      *
-     * @param string $strnum
+     * @param  string $strnum 格式化數字字串
      * @return string
      */
     function RemoveTrailingZeros($strnum)
@@ -496,7 +499,7 @@ if (!function_exists('CombineRegex'))
     /**
      * 輸入正規表示法字串陣列，輸出組合後的單一正規表示法字串
      *
-     * @param array $segments
+     * @param  array $segments 正規表示法字串陣列
      * @return string
      */
     function CombineRegex($segments)
@@ -518,6 +521,8 @@ if (!defined('Base62Dict'))
 {
     /**
      * 62 進位制數字順序（同 ASCII）
+     *
+     * @var string
      */
     define('Base62Dict', '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz');
 }
@@ -527,7 +532,7 @@ if (!function_exists('StrBase62'))
     /**
      * 返回隨機 Base62 字串
      *
-     * @param integer $length
+     * @param  integer $length 字串長度
      * @return string
      */
     function StrBase62($length = 8)
@@ -547,7 +552,7 @@ if (!function_exists('Base10To62'))
     /**
      * 將 10 進位數字轉成 62 進位數字
      *
-     * @param integer $num
+     * @param  integer $num 10 進位數字
      * @return string
      */
     function Base10To62($num)
@@ -569,7 +574,7 @@ if (!function_exists('Base62To10'))
     /**
      * 將 62 進位數字轉成 10 進位數字
      *
-     * @param integer $num
+     * @param  integer $num 62 進位數字
      * @return string
      */
     function Base62To10($num)
@@ -590,11 +595,11 @@ if (!function_exists('Base62To10'))
 if (!function_exists('Guid'))
 {
     /**
-     * 返回 GUID：將原本 Sujip\Guid\Guid class 中的 create 方法提取出來，直接作為函數引用
+     * 返回 GUID
      *
      * 原作者 Sujip Thapa (https://github.com/sudiptpa/guid)
      *
-     * @param boolean $trim
+     * @param  boolean $trim 是否去除頭尾的大括號
      * @return string
      */
     function Guid($trim = true)
@@ -640,7 +645,7 @@ if (!function_exists('Guid'))
 if (!function_exists('Uuid'))
 {
     /**
-     * 將 PHP 內建函數 uniqid() 產生的 ID（不含熵）直接插入到 GUID 前面，並把被擠出去的原 GUID 字元刪除，維持 32 位數，並保留連字號
+     * 將 PHP 內建函數 `uniqid()` 產生的 ID（不含熵）直接插入到 GUID 前面，並把被擠出去的原 GUID 字元刪除，維持 32 位數，並保留連字號
      *
      * @return string
      */
@@ -655,7 +660,7 @@ if (!function_exists('Uuid'))
 if (!function_exists('Tguid16'))
 {
     /**
-     * 產生 16 進位 GUID，再將 uniqid() 產生的 ID（含熵）插入 GUID 前面，並以連字號相連；整個字串長達 14 + 8 + 32 = 54 位數，含連字號為 60 位數
+     * 產生 16 進位 GUID，再將 `uniqid()` 產生的 ID（含熵）插入 GUID 前面，並以連字號相連；整個字串長達 14 + 8 + 32 = 54 位數，含連字號為 60 位數
      *
      * @return string
      */
@@ -671,7 +676,7 @@ if (!function_exists('Base62Guid'))
     /**
      * 將 16 進位的 GUID 轉為 62 進位；轉換完畢的字串有 24 位數，含連字號有 28 位數
      *
-     * @param boolean $dash
+     * @param  boolean $dash 是否輸出連字號
      * @return string
      */
     function Base62Guid($dash = false)
@@ -741,7 +746,7 @@ if (!function_exists('Base62Tguid'))
     /**
      * 將 16 進位的 TGUID 轉為 62 進位；轉換完畢的字串有 39 位數，含連字號有 45 位數
      *
-     * @param boolean $dash
+     * @param  boolean $dash 是否輸出連字號
      * @return string
      */
     function Base62Tguid($dash = false)
@@ -833,9 +838,9 @@ if (!function_exists('Tguid'))
      *
      * 生命、宇宙及萬事萬物的終極答案（Answer to the Ultimate Question of Life, The Universe, and Everything）！
      *
-     * 原名 Base62Tguid42 (base62_tguid42)
+     * 原名 `Base62Tguid42` (`base62_tguid42`)
      *
-     * @param boolean $dash
+     * @param  boolean $dash 是否輸出連字號
      * @return string
      */
     function Tguid($dash = false)
@@ -868,9 +873,9 @@ if (!function_exists('TguidToTime'))
     /**
      * 由 62 進位 TGUID 反推其時間；可檢測的最大時間為 3555-04-08 14:09:22.133048（zzzzzzzzzz）
      *
-     * 原名 base62_guid_to_time
+     * 原名 `base62_guid_to_time`
      *
-     * @param integer $tguid
+     * @param  integer $tguid TGUID
      * @return string
      */
     function TguidToTime($tguid = 0)
@@ -910,9 +915,9 @@ if (!function_exists('TimeToBase62Guid'))
     /**
      * 給定時間，轉成類似 62 進位 TGUID 的前 10 位數字
      *
-     * 原名 time_to_base62_guid
+     * 原名 `time_to_base62_guid`
      *
-     * @param string $time
+     * @param  string $time 時間字串
      * @return string
      */
     function TimeToBase62Guid($time = '')
@@ -971,7 +976,7 @@ if (!function_exists('JsonUnescaped'))
     /**
      * 返回 UTF-8 編碼、Unicode 及反斜線不轉義的 JSON 資料
      *
-     * @param array|object $data
+     * @param  array|object $data 待轉為 JSON 的資料
      * @return string
      */
     function JsonUnescaped($data)
@@ -985,7 +990,7 @@ if (!function_exists('JsonPrettyPrinted'))
     /**
      * 返回 UTF-8 編碼、Unicode 及反斜線不轉義且格式化的 JSON 資料
      *
-     * @param array|object $data
+     * @param  array|object $data 待轉為 JSON 的資料
      * @return string
      */
     function JsonPrettyPrinted($data)
@@ -999,7 +1004,7 @@ if (!function_exists('JsonEmptyObject'))
     /**
      * 將 JSON 字串中的「"{}"」兩側的雙引號去除，使成為標準的 JSON 空物件
      *
-     * @param string $json
+     * @param  string $json JSON 字串
      * @return string
      */
     function JsonEmptyObject($json)
@@ -1013,7 +1018,7 @@ if (!function_exists('TitleOnlyPage'))
     /**
      * 返回僅有 title 的空頁面 HTML 碼
      *
-     * @param string $title
+     * @param  string $title 頁面標題
      * @return string
      */
     function TitleOnlyPage($title)
@@ -1037,8 +1042,8 @@ if (!function_exists('AssetCachebuster'))
     /**
      * 在指定的資源路徑後加上指定長度的隨機 Base62 字串
      *
-     * @param string $path
-     * @param integer $length
+     * @param  string  $path   資源路徑
+     * @param  integer $length Base62 字串長度
      * @return string
      */
     function AssetCachebuster($path, $length = 0)
@@ -1063,7 +1068,9 @@ if (!function_exists('AssetCachebuster'))
 if (!defined('CachebusterLength'))
 {
     /**
-     * 配合 AssetCachebuster 方法所使用的隨機 Base62 字串長度
+     * 配合 `AssetCachebuster` 方法所使用的隨機 Base62 字串長度
+     *
+     * @var integer
      */
     define('CachebusterLength', 24);
 }

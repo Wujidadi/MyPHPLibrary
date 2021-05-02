@@ -3,11 +3,11 @@
 if (!function_exists('Guid'))
 {
     /**
-     * 返回 GUID：將原本 Sujip\Guid\Guid class 中的 create 方法提取出來，直接作為函數引用
+     * 返回 GUID
      *
      * 原作者 Sujip Thapa (https://github.com/sudiptpa/guid)
      *
-     * @param boolean $trim
+     * @param  boolean $trim 是否去除頭尾的大括號
      * @return string
      */
     function Guid($trim = true)
