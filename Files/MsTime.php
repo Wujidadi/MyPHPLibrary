@@ -5,7 +5,7 @@ if (!function_exists('MsTime'))
     /**
      * 返回微秒級時間字串；有指定時間戳時，返回時間戳對應的時間字串
      *
-     * @param  string|integer|null $Timestamp 時間戳
+     * @param  string|integer|double|null $Timestamp 時間戳
      * @return string
      */
     function MsTime($Timestamp = null)

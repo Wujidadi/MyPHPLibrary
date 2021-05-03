@@ -36,7 +36,7 @@ if (!function_exists('JsonEmptyObject'))
      * @param  string $json JSON 字串
      * @return string
      */
-    function JsonEmptyObject($json)
+    function JsonEmptyObject($json = '"{}"')
     {
         return preg_replace('/\"\{\}\"/', '{}', $json);
     }

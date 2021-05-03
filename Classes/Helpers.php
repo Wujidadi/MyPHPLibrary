@@ -69,7 +69,7 @@ class Helpers
      * 
      * 0、字元 0（`'0'`）及空陣列或空物件視為 `true`
      *
-     * $value 為未定義變數時會有警告（無法完全替代 `isset()` 的功能），可搭配 `@` 字元隱藏警告
+     * `$value` 為未定義變數時會有警告（無法完全替代 `isset()` 的功能），可搭配 `@` 字元隱藏警告
      *
      * @param  integer|string|array|object $value 輸入值
      * @return boolean
@@ -92,7 +92,7 @@ class Helpers
     /**
      * 返回微秒級時間字串；有指定時間戳時，返回時間戳對應的時間字串
      *
-     * @param  string|integer|null $Timestamp 時間戳
+     * @param  string|integer|double|null $Timestamp 時間戳
      * @return string
      */
     static public function Time($Timestamp = null)
@@ -386,7 +386,7 @@ class Helpers
             if ($Digit === 0)
             {
                 $Remainder = $Number % 26;              // 對 26 取餘數
-                $Quotient = (int)floor($Number / 26);   // 除 26 求商數
+                $Quotient = (int) floor($Number / 26);  // 除 26 求商數
                 $Value = $ColumnChar[$Remainder];       // 依餘數取得本位數的字母值
                 $Column = $Value;                       // 將當前字母值填入 Column
 
@@ -468,7 +468,7 @@ class Helpers
     /**
      * 輸入正規表示法字串陣列，輸出組合後的單一正規表示法字串
      *
-     * @param  array $segments 正規表示法字串陣列
+     * @param  string[] $segments 正規表示法字串陣列
      * @return string
      */
     static public function CombineRegex($segments)
@@ -743,7 +743,7 @@ class Helpers
             // 由 10 進制轉為 62 進制
             $tguidBase62[$key] = self::Base10To62($tguidDec[$key]);
 
-            // 轉換成 62 進制後，不足應有位數時，第 1 部份（uniqid() 的時間）補 0，其餘部份隨機補數字
+            // 轉換成 62 進制後，不足應有位數時，第 1 部份（`uniqid()` 的時間）補 0，其餘部份隨機補數字
             $len = strlen($tguidBase62[$key]);
             $ret = '';
             if (strlen($len) < $pad)
@@ -823,10 +823,8 @@ class Helpers
         $dec = self::Base62To10($num);
         $hex = dechex($dec);
 
-        /**
-         * 檢查有無溢位，用來決定以 16 進位值的第幾位作為秒級及微秒級時間戳的擷取分隔點
-         * 62 進位的 5K1WLnfhB1 = 10 進位的 72,057,594,037,927,935 = 16 進位的 ff ffff ffff ffff（16^14 - 1）
-         */
+        // 檢查有無溢位，用來決定以 16 進位值的第幾位作為秒級及微秒級時間戳的擷取分隔點
+        // 62 進位的 5K1WLnfhB1 = 10 進位的 72,057,594,037,927,935 = 16 進位的 ff ffff ffff ffff（16^14 - 1）
         if ($dec > self::Base62To10('5K1WLnfhB1'))
             $sub = -5;
         else
@@ -931,7 +929,7 @@ class Helpers
      * @param  string $json JSON 字串
      * @return string
      */
-    static public function JsonEmptyObject($json)
+    static public function JsonEmptyObject($json = '"{}"')
     {
         return preg_replace('/\"\{\}\"/', '{}', $json);
     }

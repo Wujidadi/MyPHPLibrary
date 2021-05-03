@@ -166,7 +166,7 @@ if (defined('Base62Dict') && function_exists('Guid'))
                     // 由 10 進制轉為 62 進制
                     $tguidBase62[$key] = Base10To62($tguidDec[$key]);
 
-                    // 轉換成 62 進制後，不足應有位數時，第 1 部份（uniqid() 的時間）補 0，其餘部份隨機補數字
+                    // 轉換成 62 進制後，不足應有位數時，第 1 部份（`uniqid()` 的時間）補 0，其餘部份隨機補數字
                     $len = strlen($tguidBase62[$key]);
                     $ret = '';
                     if (strlen($len) < $pad)
@@ -256,10 +256,8 @@ if (defined('Base62Dict') && function_exists('Guid'))
             $dec = Base62To10($num);
             $hex = dechex($dec);
 
-            /**
-             * 檢查有無溢位，用來決定以 16 進位值的第幾位作為秒級及微秒級時間戳的擷取分隔點
-             * 62 進位的 5K1WLnfhB1 = 10 進位的 72,057,594,037,927,935 = 16 進位的 ff ffff ffff ffff（16^14 - 1）
-             */
+            // 檢查有無溢位，用來決定以 16 進位值的第幾位作為秒級及微秒級時間戳的擷取分隔點
+            // 62 進位的 5K1WLnfhB1 = 10 進位的 72,057,594,037,927,935 = 16 進位的 ff ffff ffff ffff（16^14 - 1）
             if ($dec > Base62To10('5K1WLnfhB1'))
                 $sub = -5;
             else

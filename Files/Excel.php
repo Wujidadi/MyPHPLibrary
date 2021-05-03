@@ -55,7 +55,7 @@ if (!function_exists('NumberToExcelColumn'))
             if ($Digit === 0)
             {
                 $Remainder = $Number % 26;              // 對 26 取餘數
-                $Quotient = (int)floor($Number / 26);   // 除 26 求商數
+                $Quotient = (int) floor($Number / 26);  // 除 26 求商數
                 $Value = $ColumnChar[$Remainder];       // 依餘數取得本位數的字母值
                 $Column = $Value;                       // 將當前字母值填入 Column
 
