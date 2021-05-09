@@ -60,6 +60,7 @@ namespace App\Classes;
  * + Cache Buster（防止前端資源快取）
  *   - function  AssetCachebuster
  *   - const     CachebusterLength
+ *
  */
 
 class Helpers
