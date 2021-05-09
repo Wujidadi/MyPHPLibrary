@@ -9,7 +9,7 @@ if (!function_exists('IsSafe'))
      *
      * `$value` 為未定義變數時會有警告（無法完全替代 `isset()` 的功能），可搭配 `@` 字元隱藏警告
      *
-     * @param  integer|string|array|object $value 輸入值
+     * @param  integer|string|array|object  $value  輸入值
      * @return boolean
      */
     function IsSafe($value = null)

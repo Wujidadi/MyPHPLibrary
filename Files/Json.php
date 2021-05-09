@@ -5,7 +5,7 @@ if (!function_exists('JsonUnescaped'))
     /**
      * 返回 UTF-8 編碼、Unicode 及反斜線不轉義的 JSON 資料
      *
-     * @param  array|object $data 待轉為 JSON 的資料
+     * @param  array|object  $data  待轉為 JSON 的資料
      * @return string
      */
     function JsonUnescaped($data)
@@ -19,7 +19,7 @@ if (!function_exists('JsonPrettyPrinted'))
     /**
      * 返回 UTF-8 編碼、Unicode 及反斜線不轉義且格式化的 JSON 資料
      *
-     * @param  array|object $data 待轉為 JSON 的資料
+     * @param  array|object  $data  待轉為 JSON 的資料
      * @return string
      */
     function JsonPrettyPrinted($data)
@@ -33,7 +33,7 @@ if (!function_exists('JsonEmptyObject'))
     /**
      * 將 JSON 字串中的「"{}"」兩側的雙引號去除，使成為標準的 JSON 空物件
      *
-     * @param  string $json JSON 字串
+     * @param  string  $json  JSON 字串
      * @return string
      */
     function JsonEmptyObject($json = '"{}"')

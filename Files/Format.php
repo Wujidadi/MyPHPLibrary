@@ -15,7 +15,7 @@ if (!function_exists('CheckYmdHis'))
     /**
      * 檢查時間字串是否為合法的 `Y-m-d H:i:s` 格式
      *
-     * @param  string $TimeString 時間字串
+     * @param  string  $TimeString  時間字串
      * @return boolean
      */
     function CheckYmdHis($TimeString)
@@ -66,7 +66,7 @@ if (!function_exists('SecondsToEnglishString'))
     /**
      * 將秒數轉換成秒、分、時或日等各種時間單位（英文）
      *
-     * @param  integer $Seconds 秒數
+     * @param  integer  $Seconds  秒數
      * @return string|null
      */
     function SecondsToEnglishString($Seconds)
@@ -79,7 +79,7 @@ if (!function_exists('SecondsToEnglishString'))
         
         $Array = [];
 
-        // Week
+        # Week
         if ($Week > 1)
         {
             $Array[] = $Week . ' weeks';
@@ -89,7 +89,7 @@ if (!function_exists('SecondsToEnglishString'))
             $Array[] = $Week . ' week';
         }
 
-        // Day
+        # Day
         if ($Day > 1)
         {
             $Array[] = $Day . ' days';
@@ -99,7 +99,7 @@ if (!function_exists('SecondsToEnglishString'))
             $Array[] = $Day . ' day';
         }
 
-        // Hour
+        # Hour
         if ($Hour > 1)
         {
             $Array[] = $Hour . ' hours';
@@ -109,7 +109,7 @@ if (!function_exists('SecondsToEnglishString'))
             $Array[] = $Hour . ' hour';
         }
 
-        // Minute
+        # Minute
         if ($Minute > 1)
         {
             $Array[] = $Minute . ' minutes';
@@ -119,7 +119,7 @@ if (!function_exists('SecondsToEnglishString'))
             $Array[] = $Minute . ' minute';
         }
 
-        // Second
+        # Second
         if ($Second > 1)
         {
             $Array[] = $Second . ' seconds';
@@ -141,9 +141,9 @@ if (!function_exists('ChineseWeekDate'))
     /**
      * 將指定日期轉為中文「Y 年 n 月 j 日」格式，並附帶星期日序
      *
-     * @param  string   $Date   `strtotime()` 可辨識的日期字串，預設值為 `null` 即不填，則將自動代入現在時間
-     * @param  boolean  $Gap    年月日部分數字與中文字之間是否加空格，預設為 `true`
-     * @param  string   $Prefix 星期日序前綴，預設為 `x` 即「星期」，可改為 `z` 即「週」
+     * @param  string   $Date    `strtotime()` 可辨識的日期字串，預設值為 `null` 即不填，則將自動代入現在時間
+     * @param  boolean  $Gap     年月日部分數字與中文字之間是否加空格，預設為 `true`
+     * @param  string   $Prefix  星期日序前綴，預設為 `x` 即「星期」，可改為 `z` 即「週」
      * @return string[]
      */
     function ChineseWeekDate($Date = null, $Gap = true, $Prefix = 'x')
