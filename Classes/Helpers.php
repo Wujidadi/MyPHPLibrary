@@ -444,6 +444,27 @@ class Helpers
     }
 
     /**
+     * 壓縮字串：刪除字串中的換行字元及多餘空格
+     *
+     * @param  string  $text  要壓縮的字串
+     * @return string
+     */
+    static public function TextCompress($text = '')
+    {
+        return preg_replace([
+            '/\r?\n */',
+            '/\( +/', '/ +\)/',
+            '/\[ +/', '/ +\]/',
+            '/\{ +/', '/ +\}/'
+        ], [
+            ' ',
+            '(', ')',
+            '[', ']',
+            '{', '}'
+        ], $text);
+    }
+
+    /**
      * 給定經格式化後的數字字串，去除小數點後的 0
      *
      * 應使用於以 `number_format()` 加上千分位符號的數字

@@ -19,6 +19,30 @@ if (!function_exists('Blank'))
     }
 }
 
+if (!function_exists('TextCompress'))
+{
+    /**
+     * 壓縮字串：刪除字串中的換行字元及多餘空格
+     *
+     * @param  string  $text  要壓縮的字串
+     * @return string
+     */
+    function TextCompress($text = '')
+    {
+        return preg_replace([
+            '/\r?\n */',
+            '/\( +/', '/ +\)/',
+            '/\[ +/', '/ +\]/',
+            '/\{ +/', '/ +\}/'
+        ], [
+            ' ',
+            '(', ')',
+            '[', ']',
+            '{', '}'
+        ], $text);
+    }
+}
+
 if (!function_exists('RemoveTrailingZeros'))
 {
     /**

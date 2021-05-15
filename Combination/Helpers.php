@@ -24,6 +24,7 @@
  *
  * + 文字及字元和字串處理
  *   - function  Blank
+ *   - function  TextCompress
  *   - function  RemoveTrailingZeros
  *
  * + 正規表示法
@@ -466,6 +467,30 @@ if (!function_exists('Blank'))
             $Blank .= ' ';
         }
         return $Blank;
+    }
+}
+
+if (!function_exists('TextCompress'))
+{
+    /**
+     * 壓縮字串：刪除字串中的換行字元及多餘空格
+     *
+     * @param  string  $text  要壓縮的字串
+     * @return string
+     */
+    function TextCompress($text = '')
+    {
+        return preg_replace([
+            '/\r?\n */',
+            '/\( +/', '/ +\)/',
+            '/\[ +/', '/ +\]/',
+            '/\{ +/', '/ +\}/'
+        ], [
+            ' ',
+            '(', ')',
+            '[', ']',
+            '{', '}'
+        ], $text);
     }
 }
 
