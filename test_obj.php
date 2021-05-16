@@ -19,6 +19,24 @@ echo PHP_EOL;
 echo Helpers::Timestamp();
 echo PHP_EOL;
 
+echo Helpers::VarExportFormat([
+    'name' => 'Taras',
+    'status' => [
+        'live' => true,
+        'disability' => false
+    ],
+    'info' => (object) [
+        'age' => 34,
+        'location' => 'Taiwan',
+        'power' => 777,
+        'mechanism' => (object) [
+            'type' => 'SE',
+            'seniority' => 3
+        ]
+    ]
+]);
+echo PHP_EOL;
+
 echo Helpers::JsonUnescaped(['Chinese' => 'Chang Cheng-kang', 'Quenya' => 'Taras Alatmiuë']);
 echo PHP_EOL;
 

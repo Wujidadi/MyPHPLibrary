@@ -6,6 +6,7 @@ require_once('Files/MsTime.php');
 require_once('Files/Json.php');
 require_once('Files/Format.php');
 require_once('Files/String.php');
+require_once('Files/Variable.php');
 require_once('Files/Regex.php');
 require_once('Files/Excel.php');
 require_once('Files/Base62.php');
@@ -26,6 +27,24 @@ echo MsTime();
 echo PHP_EOL;
 
 echo MsTimestamp();
+echo PHP_EOL;
+
+echo VarExportFormat([
+    'name' => 'Taras',
+    'status' => [
+        'live' => true,
+        'disability' => false
+    ],
+    'info' => (object) [
+        'age' => 34,
+        'location' => 'Taiwan',
+        'power' => 777,
+        'mechanism' => (object) [
+            'type' => 'SE',
+            'seniority' => 3
+        ]
+    ]
+]);
 echo PHP_EOL;
 
 echo JsonUnescaped([ 'Chinese' => 'Chang Cheng-kang', 'Quenya' => 'Taras Alatmiuë' ]);
