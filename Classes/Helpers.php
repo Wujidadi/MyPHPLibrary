@@ -26,7 +26,9 @@ namespace App\Classes;
  *
  * + 文字及字元和字串處理
  *   - function  Blank
+ *   - function  TextCompress
  *   - function  RemoveTrailingZeros
+ *   - function  SumWord
  *
  * + 正規表示法
  *   - function  CombineRegex
@@ -488,6 +490,56 @@ class Helpers
             ],
             $strnum
         );
+    }
+
+    /**
+     * 依 `A = 1`、`B = 2`、`C = 3` 的規則，加總計算一個全英文單字或句子的字母值
+     *
+     * 若單字或句子中包含數字，該數字將會一併被加總（依數字值）  
+     * 若數字是相連的，則會被是為一個整體的整數來計算
+     *
+     * @param  string  $word  要計算的全英文單字或句子
+     * @return integer
+     */
+    static public function SumWord($word = '')
+    {
+        $dict = ' abcdefghijklmnopqrstuvwxyz';
+
+        $sum = 0;
+        $num = 0;
+        $numStr = '';
+
+        $word = preg_replace('/[^a-z0-9]/', '', strtolower($word));
+        for ($i = 0; $i < strlen($word); $i++)
+        {
+            if (strpos($dict, $word[$i]))
+            {
+                if ($numStr != '')
+                {
+                    $num = (int) $numStr;
+                    $sum += $num;
+
+                    $num = 0;
+                    $numStr = '';
+                }
+
+                $sum += strpos($dict, $word[$i]);
+            }
+            else
+            {
+                if (is_numeric($word[$i]))
+                {
+                    $numStr .= $word[$i];
+                }
+
+                if ($i === strlen($word) - 1)
+                {
+                    $sum += (int) $numStr;
+                }
+            }
+        }
+
+        return $sum;
     }
 
     /**

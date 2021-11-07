@@ -5,7 +5,7 @@ require_once('Files/Type.php');
 require_once('Files/MsTime.php');
 require_once('Files/Json.php');
 require_once('Files/Format.php');
-require_once('Files/String.php');
+require_once('Files/Text.php');
 require_once('Files/Variable.php');
 require_once('Files/Regex.php');
 require_once('Files/Excel.php');
@@ -57,6 +57,9 @@ echo 'A' . Blank(8) . 'B';
 echo PHP_EOL;
 
 echo RemoveTrailingZeros('59.666900');
+echo PHP_EOL;
+
+echo SumWord('beta');
 echo PHP_EOL;
 
 echo CombineRegex($regSeg);
