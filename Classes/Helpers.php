@@ -19,6 +19,7 @@ namespace App\Classes;
  *   - function  CheckYmdHis
  *   - function  SecondsToEnglishString
  *   - function  ChineseWeekDate
+ *   - const     TimeZoneSuffix
  *
  * + Excel 欄位名稱與數字互轉（變相的 26 進位）
  *   - function  ExcelColumnToNumber
@@ -341,6 +342,13 @@ class Helpers
 
         return [ $Day, $ChineseWeekDay ];
     }
+
+    /**
+     * 時間戳尾部的時區標記（`+hh:mm:ss|-hh:mm:ss`）
+     *
+     * @var string
+     */
+    const TimeZoneSuffix = '/[\+\-](?:[01]\d|2[0-4])(?:(?::[0-5]\d)?:[0-5]\d)?$/';
 
     /**
      * 將 Excel A1 參照樣式中的欄位序號轉為數字（Office 2019 的最大值為 XFD = 16384）

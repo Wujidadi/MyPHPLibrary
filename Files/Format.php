@@ -206,3 +206,13 @@ if (!function_exists('ChineseWeekDate'))
         return [ $Day, $ChineseWeekDay ];
     }
 }
+
+if (!defined('TimeZoneSuffix'))
+{
+    /**
+     * 時間戳尾部的時區標記（`+hh:mm:ss|-hh:mm:ss`）
+     *
+     * @var string
+     */
+    define('TimeZoneSuffix', '/[\+\-](?:[01]\d|2[0-4])(?:(?::[0-5]\d)?:[0-5]\d)?$/');
+}
